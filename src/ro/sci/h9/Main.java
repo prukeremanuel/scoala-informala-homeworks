@@ -1,6 +1,8 @@
 package ro.sci.h9;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -14,7 +16,7 @@ public class Main {
         Path inPath = Paths.get("src", "input.csv");
         System.out.println("csv exists: " + Files.exists(inPath));
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(inPath.toAbsolutePath().toString()))){
+        try (BufferedReader reader = new BufferedReader(new FileReader(inPath.toAbsolutePath().toString()))) {
 
             String line;
             StringBuilder builder = new StringBuilder();

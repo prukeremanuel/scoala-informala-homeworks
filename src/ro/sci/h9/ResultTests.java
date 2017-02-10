@@ -10,7 +10,7 @@ public class ResultTests {
 
     @Test(expected = IllegalArgumentException.class)
     public void fromString_EmptyInputGiven_ThrowsException() {
-            Result result = Result.fromString("");
+        Result result = Result.fromString("");
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -39,19 +39,19 @@ public class ResultTests {
     }
 
     @Test()
-    public void getSkiTimeWithPenalties_NoPenaltiesToApply_ReturnsSkiTimeResult(){
+    public void getSkiTimeWithPenalties_NoPenaltiesToApply_ReturnsSkiTimeResult() {
         Result result = Result.fromString("11,Umar Jorgson,SK,10:27,xxxxx,xxxxx,xxxxx");
         Assert.assertEquals("10:27", result.getSkiTimeWithPenalties().toString());
     }
 
     @Test()
-    public void getSkiTimeWithPenalties_PenaltiesToApply_ReturnsSkiTimeResultWithPenalties(){
+    public void getSkiTimeWithPenalties_PenaltiesToApply_ReturnsSkiTimeResultWithPenalties() {
         Result result = Result.fromString("11,Umar Jorgson,SK,10:27,xxoxx,xxxxo,xxxxx");
         Assert.assertEquals("10:47", result.getSkiTimeWithPenalties().toString());
     }
 
     @Test()
-    public void toString_ValidObject_ReturnsCorrectString(){
+    public void toString_ValidObject_ReturnsCorrectString() {
         Result result = Result.fromString("11,Umar Jorgson,SK,10:27,xxoxx,xxxxo,xxxxx");
         Assert.assertEquals("Umar Jorgson 10:47 (10:27 + 20)", result.toString());
     }
