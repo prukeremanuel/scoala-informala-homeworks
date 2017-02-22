@@ -1,6 +1,7 @@
 package ro.sci.h9;
 
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -10,47 +11,41 @@ import java.util.TreeSet;
  * @author Emanuel Pruker
  */
 public class SkiRace {
-    private static String[] top3 = {"Winner", "Runner-up", "Third Place"};
-    private Set<Result> results;
+    private String[] top3 = {"Winner", "Runner-up", "Third Place"};
+    private Set<Result> results = new TreeSet<Result>(new ResultComparator());
 
     /**
-     * Constructs an instance from the contents of a csv file.
-     *
-     * @param input the input string
-     */
-    public SkiRace(String input) {
-        if (input == null) {
-            throw new IllegalArgumentException("The input cannot be null");
-        }
-        results = new TreeSet<>(new ResultComparator());
-        for (String line : input.split("\n")) {
-            results.add(Result.fromString(line));
-        }
-    }
-
-    /**
-     * Constructs an instance from a list of results.
-     *
-     * @param results the list of results
-     */
-    public SkiRace(Set<Result> results) {
-        this.results = results;
-    }
-
-    /**
-     * Calculates the top 3 results of the race.
-     *
-     * @return the calculated result as a string
+     * Prints the top 3 results of the race.
      */
     public String printTop3() {
+        Iterator<Result> iterator = results.iterator();
+        int i = 0;
         StringBuilder builder = new StringBuilder();
-        Object[] resultsArray = results.toArray();
-        for (int i = 0; i < 3 && i < results.size(); i++) {
-            builder.append(String.format("%s - %s", top3[i], resultsArray[i]));
-            builder.append("\n");
+        while (iterator.hasNext()) {
+            Result next = iterator.next();
+            if (i < 3) {
+                System.out.println(String.format("%s - %s", top3[i], next));
+                builder.append(String.format("%s - %s", top3[i], next)).append("\n");
+
+            }
+            i++;
+        }
+        return builder.toString();
+    }
+
+    /**
+     * Adds a result to the set
+     *
+     * @param s the string used to build a result
+     */
+    public void addResult(String s) {
+        try {
+            Result result = Result.fromString(s);
+            results.add(result);
+        } catch (Exception e) {
+            System.out.println("Could not add result for: " + s + " because " + e);
         }
 
-        return builder.toString();
     }
 
     private static class ResultComparator implements Comparator<Result> {

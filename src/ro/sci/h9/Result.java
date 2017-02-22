@@ -34,10 +34,17 @@ public class Result {
         result.name = parts[1];
         result.countryCode = parts[2];
         result.skiTimeResult = Time.fromString(parts[3]);
+        if (parts[4].length() != 5 || parts[5].length() != 5 || parts[6].length() != 5 ||
+                (!parts[4].contains("x") && !parts[4].contains("o")) || (!parts[5].contains("x") && !parts[5].contains("o")) || (!parts[6].contains("x") && !parts[6].contains("o")))
+        {
+            throw new IllegalArgumentException("Illegal shooting score format!");
+        }
+
         result.shootingRangePenalty = (parts[4] + parts[5] + parts[6]).replace("x", "").length() * 10;
 
         return result;
     }
+
 
     public int getNumber() {
         return number;
