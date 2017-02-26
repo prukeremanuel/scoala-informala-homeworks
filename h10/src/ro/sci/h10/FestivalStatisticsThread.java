@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
  *
  * @author Emanuel Pruker
  */
-public class FestivalStatisticsThread extends Thread{
+public class FestivalStatisticsThread extends Thread {
 
     private FestivalGate festivalGate;
 
@@ -25,7 +25,7 @@ public class FestivalStatisticsThread extends Thread{
     public void run() {
         while (true) {
             try {
-                Thread.sleep(5 * 1000 );
+                Thread.sleep(5 * 1000);
             } catch (InterruptedException e) {
                 e.printStackTrace(System.err);
             }
@@ -43,7 +43,7 @@ public class FestivalStatisticsThread extends Thread{
      * @param map the map which contains statistics
      */
     private void printStatistics(Map<TicketType, Integer> map) {
-        System.out.println(String.format("%s people entered", map.values().stream().collect(Collectors.summarizingInt(x->x)).getSum()));
+        System.out.println(String.format("%s people entered", map.values().stream().collect(Collectors.summarizingInt(x -> x)).getSum()));
         map.forEach((key, value) -> {
             System.out.println(String.format("%d people have %s", value, key.name()));
         });

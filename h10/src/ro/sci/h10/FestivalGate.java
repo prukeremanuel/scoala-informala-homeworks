@@ -5,9 +5,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.stream.Collectors;
 
 /**
+ * This class represents a festival gate
+ *
  * @author Emanuel Pruker
  */
 public class FestivalGate {

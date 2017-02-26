@@ -19,8 +19,6 @@ public class Festival {
             thread.start();
         }
 
-
-
         for (FestivalAtendeeThread festivalAtendee : festivalAtendees) {
             festivalAtendee.join();
         }

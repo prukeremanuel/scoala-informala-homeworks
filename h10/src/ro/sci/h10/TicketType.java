@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Random;
 
 /**
+ * This enum represents the ticket types.
+ *
  * @author Emanuel Pruker
  */
 public enum TicketType {

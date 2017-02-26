@@ -6,6 +6,8 @@ import org.junit.Test;
 import java.util.Map;
 
 /**
+ * This class contains tests for FestivalGate class
+ *
  * @author Emanuel Pruker
  */
 public class FestivalGateTests {
@@ -15,7 +17,7 @@ public class FestivalGateTests {
         FestivalGate festivalGate = new FestivalGate();
         Map<TicketType, Integer> statistics = festivalGate.getStatistics();
         Assert.assertEquals(TicketType.values().length, statistics.size());
-        statistics.forEach((key, value)->{
+        statistics.forEach((key, value) -> {
             Assert.assertEquals(0, value.intValue());
         });
     }
@@ -26,7 +28,7 @@ public class FestivalGateTests {
         festivalGate.validateTicket(TicketType.FULL);
         Map<TicketType, Integer> statistics = festivalGate.getStatistics();
         Assert.assertEquals(TicketType.values().length, statistics.size());
-        statistics.forEach((key, value)->{
+        statistics.forEach((key, value) -> {
             if (key == TicketType.FULL) {
                 Assert.assertEquals(1, value.intValue());
             }
@@ -40,7 +42,7 @@ public class FestivalGateTests {
         festivalGate.validateTicket(TicketType.FULL);
         Map<TicketType, Integer> statistics = festivalGate.getStatistics();
         Assert.assertEquals(TicketType.values().length, statistics.size());
-        statistics.forEach((key, value)->{
+        statistics.forEach((key, value) -> {
             if (key == TicketType.FULL) {
                 Assert.assertEquals(2, value.intValue());
             }
@@ -55,7 +57,7 @@ public class FestivalGateTests {
         festivalGate.validateTicket(TicketType.FULL_VIP);
         Map<TicketType, Integer> statistics = festivalGate.getStatistics();
         Assert.assertEquals(TicketType.values().length, statistics.size());
-        statistics.forEach((key, value)->{
+        statistics.forEach((key, value) -> {
             if (key == TicketType.FULL) {
                 Assert.assertEquals(2, value.intValue());
             }
